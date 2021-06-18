@@ -1,5 +1,6 @@
 import Nico1 from './images/nico_1.jpg';
-import './App.css';
+import './style/reset.css'
+import './style/base.scss'
 import { Home } from './Home';
 import { Menu } from './Menu';
 import { TopImage } from './TopImage';
@@ -11,6 +12,7 @@ function App() {
     <>
       <body>
         <BrowserRouter>
+          <Menu />
           <Router/>
         </BrowserRouter>
       </body>
