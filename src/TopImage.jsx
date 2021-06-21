@@ -4,6 +4,7 @@ import styled from  'styled-components';
 const SImg = styled.img`
     height: 500px;
     margin: 0 auto;
+    border-radius: 50%;
 `;
 
 export const TopImage = () => {

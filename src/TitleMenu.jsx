@@ -19,7 +19,7 @@ export const TitleMenu = () => {
 const SHeader = styled.header`
     display: flex;
     justify-content: space-between;
-    margin: 10px;
+    margin: 20px;
 `;
 
 const SMenuNav = styled.nav`
