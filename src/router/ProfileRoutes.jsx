@@ -1,8 +1,8 @@
-import { Profile } from "../Profile";
-import { ProfileNico } from "../ProfileNico";
-import { ProfileGoemon } from "../ProfileGoemon";
-import { ProfileHina } from "../ProfileHina";
-import { ProfileParams } from "../ProfileParams";
+import { Profile } from "../components/pages/Profile";
+import { ProfileNico } from "../components/pages/ProfileNico";
+import { ProfileGoemon } from "../components/pages/ProfileGoemon";
+import { ProfileHina } from "../components/pages/ProfileHina";
+import { ProfileParams } from "../components/pages/ProfileParams";
 
 export const ProfileRoutes = [
     {

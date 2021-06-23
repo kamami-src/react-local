@@ -1,17 +1,21 @@
 import { Switch, Route } from 'react-router-dom';
-import { Contact } from '../Contact';
-import { ContactConfirm } from '../ContactConfirm';
-import { Diary } from '../Diary';
-import { Home } from '../Home';
-import { Page404 } from '../Page404';
+import { Contact } from '../components/pages/Contact';
+import { ContactConfirm } from '../components/pages/ContactConfirm';
+import { Diary } from '../components/pages/Diary';
+import { Home } from '../components/pages/Home';
+import { Page404 } from '../components/pages/Page404';
 import { ProfileRoutes } from './ProfileRoutes';
+import { DefaultLayout } from '../components/templates/DefaultLayout';
+import { HeaderOnly } from '../components/templates/HeaderOnly';
 
 export const Router = () => {
     return (
         <>
             <Switch>
                 <Route exact path="/">
-                    <Home />
+                    <DefaultLayout>
+                        <Home />
+                    </DefaultLayout>
                 </Route>
                 
                 <Route path="/profile" render={({ match:{ url } }) => (
@@ -22,23 +26,34 @@ export const Router = () => {
                                 exact={route.exact}
                                 path={`${url}${route.path}`}
                             >
-                                {route.children}
+                                <HeaderOnly>
+                                    {route.children}
+                                </HeaderOnly>
                             </Route>
                         ))}
                     </Switch>
                 )}>
                 </Route>
                 <Route path="/diary">
-                    <Diary />
+                    <HeaderOnly>
+                        <Diary />
+                    </HeaderOnly>
+                    
                 </Route>
                 <Route　exact path="/contact">
-                    <Contact />
+                    <HeaderOnly>
+                        <Contact />
+                    </HeaderOnly>
                 </Route>
                 <Route　exact path="/contact/confirm">
-                    <ContactConfirm />
+                    <HeaderOnly>
+                        <ContactConfirm />
+                    </HeaderOnly>
                 </Route>
                 <Route path="*">
-                    <Page404 />
+                    <HeaderOnly>
+                        <Page404 />
+                    </HeaderOnly>
                 </Route>
             </Switch>
         </>

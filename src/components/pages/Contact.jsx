@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
-import { ContactInput } from "./components/ContactInput";
+import { LabelInput } from "../atoms/input/LabelInput";
+import { BaseButton } from "../atoms/button/BaseButton";
 
- /* global form */ 
 export const Contact = () => {
     const history = useHistory();
     const contactConfirm = () => {
@@ -16,10 +16,10 @@ export const Contact = () => {
         <>
             <p>contact</p>
             <form name="contactform" autocomplete="off">
-                <ContactInput　label= "名前" name="name" type="text" placeholder="山田　花子" />
-                <ContactInput　label= "年齢" name="age" type="number" placeholder="30" />
-                <ContactInput　label= "趣味" name="hobby" type="text" placeholder="釣り、映画鑑賞" />
-                <button type="button" onClick={ contactConfirm }>確認</button>
+                <LabelInput　label= "名前" name="name" type="text" placeholder="山田　花子" />
+                <LabelInput　label= "年齢" name="age" type="number" placeholder="30" />
+                <LabelInput　label= "趣味" name="hobby" type="text" placeholder="釣り、映画鑑賞" />
+                <BaseButton type="button" onClick={ contactConfirm }>確認</BaseButton>
             </form>            
         </>
     );

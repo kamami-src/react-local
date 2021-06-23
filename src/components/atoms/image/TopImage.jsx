@@ -1,4 +1,4 @@
-import Nico1 from './images/nico_1.jpg';
+import Nico1 from '../../../images/nico_1.jpg';
 import styled from  'styled-components';
 
 const SImg = styled.img`
