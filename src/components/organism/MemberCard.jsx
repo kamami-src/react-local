@@ -3,9 +3,9 @@ import { Card } from "../atoms/card/Card";
 import { MemberIconWithName } from "../molecules/MemberIconWithName";
 
 export const MemberCard = (props) => {
-    const { member } = props;
+    const { member, onClick } = props;
     return (
-        <Card>
+        <Card onClick={onClick}>
             <MemberIconWithName imageSrc={member.image} name={member.name} />
             <SDl>
                 <dt>age</dt>

@@ -9,14 +9,10 @@ export const LabelInput = (props) => {
         )
     }
 const SP = styled.p`
-    {
-        padding: 7px;
-    }
+    padding: 7px;
 `;
 const SLabel = styled.label`
-    {
-        display: block;
-        color: white;
-        font-size: 12px;
-    }
+    display: block;
+    color: white;
+    font-size: 12px;
 `;

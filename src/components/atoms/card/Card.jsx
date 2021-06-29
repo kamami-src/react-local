@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Card = (props) => {
-    const { children } = props;
+    const { children, onClick } = props;
     return (
-        <SCard>{children}</SCard>
+        <SCard onClick={onClick}>{children}</SCard>
     )
 };
 

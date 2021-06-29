@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { SearchInput } from "../molecules/SearchInput";
 import { MemberCard } from "../organism/MemberCard";
-import { MemberIconWithName } from "../molecules/MemberIconWithName";
 import styled from "styled-components";
 
 export const Profile = () => {
     const members = [
         {
             id: 1,
-            link: "/profile/nico",
             image: "https://source.unsplash.com/wTPp323zAEw",
             name: "nico",
             age: "3",
@@ -17,7 +15,6 @@ export const Profile = () => {
         },
         {
             id: 2,
-            link: "/profile/goemon",
             image: "https://source.unsplash.com/wTPp323zAEw",
             name: "goemon",
             age: "3",
@@ -26,7 +23,6 @@ export const Profile = () => {
         },
         {
             id: 3,
-            link: "/profile/hina",
             image: "https://source.unsplash.com/wTPp323zAEw",
             name: "hina",
             age: "3",
@@ -35,12 +31,17 @@ export const Profile = () => {
         }
     ];
 
+    const history = useHistory();
+    const onClickCard = (id) => {
+        history.push(`/profile/${id}`);
+    }
+
     return (
         <div>
             <SearchInput />
             <SUserArea>
                 {members.map((member) => {
-                    return <MemberCard member={member} />
+                    return <MemberCard member={member} onClick={ function(){onClickCard(member.id)} } />
                 })}
             </SUserArea>
         </div>
