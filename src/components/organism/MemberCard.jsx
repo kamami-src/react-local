@@ -4,7 +4,7 @@ import { MemberIconWithName } from "../molecules/MemberIconWithName";
 
 export const MemberCard = (props) => {
     const { member, onClick } = props;
-    const { image, name="", age="99", birthday="111", hobby="11" } = member;
+    const { image, name="-", age="99", birthday="-", hobby="-", phone="-" } = member;
     return (
         <Card onClick={onClick}>
             <MemberIconWithName imageSrc={image} name={name} />
@@ -21,6 +21,10 @@ export const MemberCard = (props) => {
                     <dt>hobby</dt>
                     <dd>{hobby}</dd>
                 </div>
+                <div>
+                    <dt>phone</dt>
+                    <dd>{phone}</dd>
+                </div>
             </SDl>
         </Card>
     )
@@ -34,8 +38,7 @@ const SDl = styled.dl`
         display: flex;
 
         dt {
-
-            min-width: 6em;
+            min-width: 5em;
             min-height: 1em;
             margin: 0.1em 0 0.5em 0;
         }
