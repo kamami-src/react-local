@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "../../providers/UserProvider";
+import { NoImage } from "../atoms/image/NoImage";
 
 export const MemberIconWithName = (props) => {
     const { imageSrc, name } = props;
@@ -9,7 +10,8 @@ export const MemberIconWithName = (props) => {
 
     return (
         <SContainer>
-            <SImg src={imageSrc} alt={name} />
+            {imageSrc && <SImg src={imageSrc} alt={name} />}
+            {imageSrc || <NoImage />}
             <SName>{name}</SName>
             {isAdmin && <SEdit>編集</SEdit>}
         </SContainer>

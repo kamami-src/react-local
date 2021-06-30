@@ -13,6 +13,7 @@ const SCard = styled.div`
     border-radius: 8px;
     padding: 16px;
     margin-right: 16px;
+    margin-bottom: 16px;
 
     &:hover {
         box-shadow: none;
