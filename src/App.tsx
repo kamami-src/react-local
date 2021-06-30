@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <body>
-        <div class="container">
+        <div className="container">
           <UserProvider>
             <BrowserRouter>
               <Router/>

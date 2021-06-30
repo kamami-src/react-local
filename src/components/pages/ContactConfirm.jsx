@@ -11,6 +11,5 @@ export const ContactConfirm = () => {
             <p>名前：{name}</p>
             <p>年齢：{age}</p>
         </>
-
     )
 }
