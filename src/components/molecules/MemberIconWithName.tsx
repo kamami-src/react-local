@@ -1,17 +1,23 @@
 import React, { useContext } from "react";
+import { VFC } from "react";
 import styled from "styled-components";
-import { UserContext } from "../../providers/UserProvider";
+import { LoginUserContext } from "../../providers/LoginUserProvider";
 import { NoImage } from "../atoms/image/NoImage";
+import { UserType } from "../../types/user";
 
-export const MemberIconWithName = (props) => {
+type Props = {
+    imageSrc: string;
+    name: string;
+}
+
+export const MemberIconWithName: VFC<Props> = (props) => {
     const { imageSrc, name } = props;
-    const { userInfo }= useContext(UserContext);
-    const isAdmin = userInfo ? userInfo.isAdmin : false;
+    const { loginUser } = useContext(LoginUserContext);
+    const isAdmin = loginUser ? loginUser.isAdmin : false;
 
     return (
         <SContainer>
-            {imageSrc && <SImg src={imageSrc} alt={name} />}
-            {imageSrc || <NoImage />}
+            {imageSrc ? <SImg src={imageSrc} alt={`${name}プロフィール画像`} /> : <NoImage />}
             <SName>{name}</SName>
             {isAdmin && <SEdit>編集</SEdit>}
         </SContainer>

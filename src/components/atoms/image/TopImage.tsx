@@ -1,7 +1,9 @@
-import Nico1 from '../../../images/nico_1.jpg';
+import { VFC } from 'react';
 import styled from  'styled-components';
 
-export const TopImage = () => {
+import Nico1 from '../../../images/nico_1.jpg';
+
+export const TopImage: VFC = () => {
     return (
         <SImg src={Nico1} alt="" />
         );

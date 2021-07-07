@@ -1,6 +1,10 @@
+import { VFC } from "react";
 import { HeaderMenu } from "../organism/HeaderMenu";
 
-export const HeaderOnly = (props) => {
+type Props = {
+    children: React.ReactNode;
+}
+export const HeaderOnly: VFC<Props> = (props) => {
     const { children } = props;
     return (
         <>

@@ -1,7 +1,7 @@
+import { VFC } from 'react';
 import NoImageGazou from '../../../images/no_image.jpg';
-import styled from  'styled-components';
 
-export const NoImage = () => {
+export const NoImage: VFC = () => {
     return (
         <img src={NoImageGazou} alt="画像がありません" />
         );

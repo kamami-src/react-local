@@ -1,7 +1,15 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo, VFC } from "react";
 import styled from "styled-components";
 
-export const BaseRadio = memo((props) => {
+type Props = {
+    name: string;
+    value: any;
+    label: string;
+    defaultChecked: boolean;
+    onChangeFunc: () => void;
+}
+
+export const BaseRadio: VFC<Props> = memo((props) => {
     const { name, value, label, defaultChecked=false, onChangeFunc } = props;
 
     const [ radioVal, setRadioVal ] = useState(defaultChecked);
@@ -13,8 +21,8 @@ export const BaseRadio = memo((props) => {
     }
     return (
         <>
-            <SRadio id={`${name}${value}`} type="radio" name={name} value={value} defaultChecked ={defaultChecked} onChange={changeRadio}/>
-            <SLabel for={`${name}${value}`}>{label}</SLabel>
+            <SRadio id={`${name}${value}`} type="radio" name={name} value={value} defaultChecked={defaultChecked} onChange={changeRadio}/>
+            <SLabel htmlFor={`${name}${value}`}>{label}</SLabel>
         </>
     )
 });

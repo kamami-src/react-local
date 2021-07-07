@@ -1,11 +1,13 @@
+import { VFC, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { SearchInput } from "../molecules/SearchInput";
-import { MemberCard } from "../organism/MemberCard";
 import styled from "styled-components";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
-export const Profile = () => {
+import { SearchInput } from "../molecules/SearchInput";
+import { MemberCard } from "../organism/MemberCard";
+import { Membertype } from "../../types/member";
+
+export const Profile: VFC = () => {
     // const members = [
     //     {
     //         id: 1,
@@ -33,7 +35,7 @@ export const Profile = () => {
     //     }
     // ];
     
-    const [members, setMembers] = useState([]);
+    const [members, setMembers] = useState<Array<Membertype>>([]);
     // 初回のみ実行
     useEffect(() => {
         axios
@@ -44,7 +46,7 @@ export const Profile = () => {
     );
 
     const history = useHistory();
-    const onClickCard = (id) => {
+    const onClickCard = (id: number) => {
         history.push(`/profile/${id}`);
     }
     return (
@@ -52,7 +54,7 @@ export const Profile = () => {
             <SearchInput />
             <SUserArea>
                 {members.map((member) => {
-                    return <MemberCard member={member} onClick={ function(){onClickCard(member.id)} } />
+                    return <MemberCard key={member.id} member={member} onClick={ function(){onClickCard(member.id)} } />
                 })}
             </SUserArea>
             {(members.length===0) && "一覧を取得できませんでした"}

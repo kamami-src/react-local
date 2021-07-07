@@ -1,6 +1,11 @@
+import { VFC } from 'react';
 import styled from 'styled-components';
 
-export const Header = (props) => {
+type Props = {
+    children: React.ReactNode;
+}
+
+export const Header: VFC<Props> = (props) => {
     const { children } = props;
     return (
         <SHeader>{children}</SHeader>

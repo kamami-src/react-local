@@ -2,18 +2,16 @@ import './style/reset.css'
 import './style/base.scss'
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './router/Router';
-import { UserProvider } from './providers/UserProvider';
+import { LoginUserProvider } from './providers/LoginUserProvider';
 
 function App() {
   return (
     <>
       <body>
         <div className="container">
-          <UserProvider>
-            <BrowserRouter>
-              <Router/>
-            </BrowserRouter>
-          </UserProvider>
+          <BrowserRouter>
+            <Router/>
+          </BrowserRouter>
         </div>
       </body>
     </>

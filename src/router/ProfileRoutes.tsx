@@ -1,5 +1,5 @@
 import { Profile } from "../components/pages/Profile";
-import { ProfileParams } from "../components/pages/ProfileDetail";
+import { ProfileDetail } from "../components/pages/ProfileDetail";
 
 export const ProfileRoutes = [
     {
@@ -10,6 +10,6 @@ export const ProfileRoutes = [
     {
         path: "/:id",
         exact: false,
-        children: <ProfileParams />
+        children: <ProfileDetail />
     }
 ]

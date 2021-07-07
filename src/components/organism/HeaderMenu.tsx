@@ -1,12 +1,13 @@
+import { VFC } from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
+
 import { MenuList } from "../molecules/MenuList";
 import { Header } from "../atoms/layout/Header";
 
-export const HeaderMenu = () => {
+export const HeaderMenu: VFC = () => {
     return (
         <Header>
-            <div class="title"><Link to="/">homePage(kari)</Link></div>
+            <div className="title"><Link to="/">homePage(kari)</Link></div>
             <MenuList />
         </Header>
     );

@@ -1,7 +1,8 @@
+import { VFC } from 'react';
 import styled from 'styled-components';
 import { MenuItem } from "../atoms/menu/MenuItem";
 
-export const MenuList = () => {
+export const MenuList: VFC = () => {
     return (
             <SMenuNav>
                 <SMenuUl>

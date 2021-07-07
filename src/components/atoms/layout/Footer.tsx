@@ -1,6 +1,7 @@
+import { VFC } from 'react';
 import styled from 'styled-components';
 
-export const Footer = (props) => {
+export const Footer: VFC = () => {
     return (
         <SFooter>&copy; nico-chan inc.</SFooter>
     );

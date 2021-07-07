@@ -1,8 +1,9 @@
+import { VFC } from "react";
 import styled from "styled-components";
 import { BaseButton } from "../atoms/button/BaseButton";
 import { BaseInput } from "../atoms/input/BaseInput";
 
-export const SearchInput = () => {
+export const SearchInput: VFC = () => {
     return (
         <SContainer>
             <BaseInput name="search" placeholder="検索条件を入力してください"></BaseInput>

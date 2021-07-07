@@ -1,6 +1,12 @@
+import { VFC } from "react";
 import styled from "styled-components";
 
-export const Card = (props) => {
+type Props = {
+    children: React.ReactNode;
+    onClick: () => void;
+}
+
+export const Card: VFC<Props> = (props) => {
     const { children, onClick } = props;
     return (
         <SCard onClick={onClick}>{children}</SCard>
