@@ -1,4 +1,4 @@
-export type Membertype = {
+export type MemberType = {
     id: number;
     name: string;
     username: string;
@@ -19,9 +19,5 @@ export type Membertype = {
       name: string;
       catchPhrase: string;
       bs: string;
-    },
-    age: number;
-    image: string;
-    birthday: string;
-    hobby: string;
+    }
 }

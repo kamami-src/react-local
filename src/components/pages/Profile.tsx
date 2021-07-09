@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { SearchInput } from "../molecules/SearchInput";
 import { MemberCard } from "../organism/MemberCard";
-import { Membertype } from "../../types/member";
+import { MemberType } from "../../types/member";
 
 export const Profile: VFC = () => {
     // const members = [
@@ -35,12 +35,12 @@ export const Profile: VFC = () => {
     //     }
     // ];
     
-    const [members, setMembers] = useState<Array<Membertype>>([]);
+    const [members, setMembers] = useState<Array<MemberType>>([]);
     // 初回のみ実行
     useEffect(() => {
         axios
-            .get("https://jsonplaceholder.typicode.com/users")
-            .then((result)=>{ setMembers(result.data); })
+            .get<Array<MemberType>>("https://jsonplaceholder.typicode.com/users")
+            .then((res)=>{ setMembers(res.data); })
             .catch((err)=>{ setMembers([]); });
         }
     );

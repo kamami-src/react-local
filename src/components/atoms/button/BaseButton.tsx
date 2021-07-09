@@ -5,13 +5,14 @@ import { BaseButtonStyle } from "./BaseButtonStyle";
 
 type Props = {
     children: React.ReactNode;
-    onClick?: VoidFunction;
+    onClick?: () => void;
+    disabled?: boolean;
 } & JSX.IntrinsicElements["button"];
 
-export const BaseButton:VFC<Props> = (props) => {
-    const { children, type="button", onClick } = props;
+export const BaseButton: VFC<Props> = (props) => {
+    const { children, type="button", onClick, disabled=false } = props;
     return (
-        <SButton type={type} onClick={onClick}>{children}</SButton>
+        <SButton type={type} onClick={onClick} disabled={disabled}>{children}</SButton>
     )
 };
 

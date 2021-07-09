@@ -3,13 +3,15 @@ import { Switch, Route } from 'react-router-dom';
 
 import { LoginUserProvider } from "../providers/LoginUserProvider";
 import { ProfileRoutes } from './ProfileRoutes';
+import { DefaultLayout } from '../components/templates/DefaultLayout';
+import { HeaderOnly } from '../components/templates/HeaderOnly';
+
+import { Login } from '../components/pages/Login';
+import { Home } from '../components/pages/Home';
 import { Contact } from '../components/pages/Contact';
 import { ContactConfirm } from '../components/pages/ContactConfirm';
 import { Diary } from '../components/pages/Diary';
-import { Home } from '../components/pages/Home';
 import { Page404 } from '../components/pages/Page404';
-import { DefaultLayout } from '../components/templates/DefaultLayout';
-import { HeaderOnly } from '../components/templates/HeaderOnly';
 
 export const Router: VFC = () => {
     return (
@@ -17,6 +19,10 @@ export const Router: VFC = () => {
             <Switch>
                 <LoginUserProvider>
                     <Route exact path="/">
+                        <Login />
+                    </Route>
+
+                    <Route exact path="/home">
                         <DefaultLayout>
                             <Home />
                         </DefaultLayout>

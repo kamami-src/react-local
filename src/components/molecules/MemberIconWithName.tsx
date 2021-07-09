@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { VFC } from "react";
 import styled from "styled-components";
 import { LoginUserContext } from "../../providers/LoginUserProvider";
 import { NoImage } from "../atoms/image/NoImage";
-import { UserType } from "../../types/user";
 
 type Props = {
     imageSrc: string;

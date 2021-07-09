@@ -11,4 +11,8 @@ export const BaseButtonStyle = styled.button`
         cursor: pointer;
         opacity: 0.7;
     }
+    &:disabled {
+        opacity: 0.7;
+        pointer-events: none;
+    }
 `

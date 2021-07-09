@@ -3,16 +3,21 @@ import styled from "styled-components";
 
 import { Card } from "../atoms/card/Card";
 import { MemberIconWithName } from "../molecules/MemberIconWithName";
-import { Membertype } from "../../types/member";
+import { MemberType } from "../../types/member";
 
 type Props = {
     onClick: () => void;
-    member: Membertype;
+    member: MemberType;
 }
 
 export const MemberCard: VFC<Props> = (props) => {
     const { member, onClick } = props;
-    const { image, name="-", age=99, birthday="-", hobby="-", phone="-" } = member;
+    const { name="-", phone="-" } = member;
+    const image: string = "";
+    const age: number = 99;
+    const birthday: string = "-";
+    const hobby: string = "-";
+
     return (
         <Card onClick={onClick}>
             <MemberIconWithName imageSrc={image} name={name} />
