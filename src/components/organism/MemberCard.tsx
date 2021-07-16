@@ -6,12 +6,13 @@ import { MemberIconWithName } from "../molecules/MemberIconWithName";
 import { MemberType } from "../../types/member";
 
 type Props = {
-    onClick: () => void;
+    id: number;
+    onClick: (id: number) => void;
     member: MemberType;
 }
 
 export const MemberCard: VFC<Props> = (props) => {
-    const { member, onClick } = props;
+    const { id, member, onClick } = props;
     const { name="-", phone="-" } = member;
     const image: string = "";
     const age: number = 99;
@@ -19,7 +20,7 @@ export const MemberCard: VFC<Props> = (props) => {
     const hobby: string = "-";
 
     return (
-        <Card onClick={onClick}>
+        <Card onClick={() => onClick(id)}>
             <MemberIconWithName imageSrc={image} name={name} />
             <SDl>
                 <div>

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { VFC } from "react";
 import styled from "styled-components";
-import { LoginUserContext } from "../../providers/LoginUserProvider";
 import { NoImage } from "../atoms/image/NoImage";
 
 type Props = {
@@ -11,14 +10,11 @@ type Props = {
 
 export const MemberIconWithName: VFC<Props> = (props) => {
     const { imageSrc, name } = props;
-    const { loginUser } = useContext(LoginUserContext);
-    const isAdmin = loginUser ? loginUser.isAdmin : false;
 
     return (
         <SContainer>
             {imageSrc ? <SImg src={imageSrc} alt={`${name}プロフィール画像`} /> : <NoImage />}
             <SName>{name}</SName>
-            {isAdmin && <SEdit>編集</SEdit>}
         </SContainer>
     )
 }

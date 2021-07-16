@@ -1,63 +1,66 @@
-import { VFC, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { VFC, useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 import { SearchInput } from "../molecules/SearchInput";
 import { MemberCard } from "../organism/MemberCard";
 import { MemberType } from "../../types/member";
+import { GetUsers } from "../../hooks/GetUsers";
+import { UseMessage } from "../../hooks/UseMessage"
+import { MemberDetailModal } from "../organism/MemberDetailModal";
 
 export const Profile: VFC = () => {
-    // const members = [
-    //     {
-    //         id: 1,
-    //         image: "https://source.unsplash.com/wTPp323zAEw",
-    //         name: "nico",
-    //         age: "3",
-    //         birthday: "2017.2.5",
-    //         hobby: "豆苗"
-    //     },
-    //     {
-    //         id: 2,
-    //         image: "https://source.unsplash.com/wTPp323zAEw",
-    //         name: "goemon",
-    //         age: "3",
-    //         birthday: "2017.2.5",
-    //         hobby: "豆苗"
-    //     },
-    //     {
-    //         id: 3,
-    //         image: "https://source.unsplash.com/wTPp323zAEw",
-    //         name: "hina",
-    //         age: "3",
-    //         birthday: "2017.2.5",
-    //         hobby: "豆苗"
-    //     }
-    // ];
-    
-    const [members, setMembers] = useState<Array<MemberType>>([]);
-    // 初回のみ実行
-    useEffect(() => {
-        axios
-            .get<Array<MemberType>>("https://jsonplaceholder.typicode.com/users")
-            .then((res)=>{ setMembers(res.data); })
-            .catch((err)=>{ setMembers([]); });
-        }
-    );
+    console.log("Profileレンダリング")
 
-    const history = useHistory();
-    const onClickCard = (id: number) => {
-        history.push(`/profile/${id}`);
+    // メンバー一覧用の変数
+    const [members, setMembers] = useState<Array<MemberType> | null>([]);
+    const { getAllUsers, getSpecificUser } = GetUsers();
+
+    // モーダル用変数
+    const [show, setShow] = useState(false);
+    const [target, setTarget] = useState<MemberType | null>();
+    const { showMessage } = UseMessage();
+
+    const onClickUser = (id: number) => {
+        // 選択したユーザIDの情報を取得できた場合モーダルを表示
+        getSpecificUser({id: id}).then((res) => {
+            if (res.data) {
+                setShow(true);
+                setTarget(res.data);
+            } else {
+                setShow(false);
+                setTarget(null);
+                const msg = res.msg ? res.msg : "ユーザが見つかりません";
+                showMessage({type: "alert", message: msg});
+            }
+        }).catch(() => {
+            setShow(false);
+            setTarget(null);
+            showMessage({type: "alert", message: "ユーザが見つかりません"});
+        })
     }
+
+    // 一覧データの取得（初回のみ実行）
+    useEffect(() => {
+        getAllUsers().then((res) => {
+            setMembers(res.data);
+        }).catch(() => {
+            setMembers(null);
+        })
+    }, []);
+
     return (
         <div>
             <SearchInput />
             <SUserArea>
-                {members.map((member) => {
-                    return <MemberCard key={member.id} member={member} onClick={ function(){onClickCard(member.id)} } />
-                })}
+                {members ? (
+                    members.map((member) => {
+                        return <MemberCard id={member.id} member={member} onClick={ function(){onClickUser(member.id)} } />
+                    })) :
+                    ( "一覧を取得できませんでした")
+                }
             </SUserArea>
-            {(members.length===0) && "一覧を取得できませんでした"}
+            { show && target && (<MemberDetailModal show={show} setShow={setShow} target={target} />)}
+            
         </div>
     );
 };

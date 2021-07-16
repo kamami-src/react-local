@@ -5,15 +5,17 @@ import { BaseInput } from "./BaseInput";
 type Props = {
     label: string;
     name: string;
-    type: string;
-    placeholder: string;
+    type?: string;
+    placeholder?: string;
+    defaultValue?: string | number;
+    readOnly?: boolean;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const LabelInput: VFC<Props> = (props) => {
-    const { label="", name, type, placeholder,  onChange } = props;
+    const { label="", name, type, placeholder, defaultValue, readOnly=false, onChange } = props;
     return (
-        <SP><SLabel>{ label }<BaseInput name={ name } type={ type } placeholder={placeholder} onChange={onChange}></BaseInput></SLabel></SP>
+        <SP><SLabel>{ label }<BaseInput name={ name } type={ type } placeholder={placeholder} defaultValue={defaultValue} readOnly={readOnly} onChange={onChange}></BaseInput></SLabel></SP>
     )
 }
 
@@ -23,6 +25,6 @@ const SP = styled.p`
 
 const SLabel = styled.label`
     display: block;
-    color: white;
+    color: gray;
     font-size: 12px;
 `;

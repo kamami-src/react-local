@@ -7,17 +7,19 @@ import { UseAuth } from  "../../hooks/UseAuth";
 
 export const Login = () => {
     
-    const [loginId, setLoginId] = useState<string>('');
+    const [loginId, setLoginId] = useState<number | null>(null);
     const { logIn } = UseAuth();
     const [ disabledFlg, setDisabledFlg ] = useState<boolean>(true);
     
     const onChangeFunc = (e: ChangeEvent<HTMLInputElement>) => {
-        setLoginId(e.target.value);
-        setDisabledFlg(e.target.value ? false : true);
+        // if(typeof(e.target.value)=="number") {
+            setLoginId(Number(e.target.value));
+            setDisabledFlg(e.target.value ? false : true);
+        // }
     }
     
     const onClickFunc = () => {
-        logIn(loginId);
+        loginId && logIn(loginId);
     }
 
     return (

@@ -1,7 +1,8 @@
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { GetUsers } from "./GetUsers";
-import { useLoginUser } from "../providers/LoginUserProvider";
+import { LoginUserContext, useLoginUser } from "../providers/LoginUserProvider";
 import { UseMessage } from "./UseMessage";
 
 export const UseAuth = () => {
@@ -10,7 +11,7 @@ export const UseAuth = () => {
     const { showMessage } = UseMessage();
     const history = useHistory();
 
-    const logIn = (id: string) => {
+    const logIn = (id: number) => {
         getSpecificUser({id: id}).then((res) => {
             if (res.data) {
                 const isAdmin = res.data.id===10 ? true : false; 
@@ -27,6 +28,14 @@ export const UseAuth = () => {
             showMessage({ type: "alert", message: msg});
         });
     }
-    return { logIn };
+
+    
+    const GetAdminFlg = () => {
+        const { loginUser } = useContext(LoginUserContext);
+        const adminFlg = loginUser ? loginUser.isAdmin : false;
+        return adminFlg;
+    }
+
+    return { logIn, GetAdminFlg };
 }
 

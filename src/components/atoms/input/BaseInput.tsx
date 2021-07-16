@@ -5,14 +5,16 @@ import { BaseInputStyle } from "./BaseInputStyle";
 type Props = {
     name: string;
     type?: string;
-    placeholder: string;
+    placeholder?: string;
+    defaultValue?: string | number;
+    readOnly?: boolean;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const BaseInput: VFC<Props> = (props) => {
-    const { name, type="text", placeholder="", onChange } = props;
+    const { name, type="text", placeholder="", defaultValue="", readOnly=false, onChange } = props;
     return (
-        <SInput name={ name } type={ type } placeholder={placeholder} onChange={onChange} />
+        <SInput name={ name } type={ type } placeholder={placeholder} defaultValue={defaultValue} readOnly={readOnly} onChange={onChange} />
     )
 };
 

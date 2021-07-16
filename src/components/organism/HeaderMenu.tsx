@@ -7,7 +7,7 @@ import { Header } from "../atoms/layout/Header";
 export const HeaderMenu: VFC = () => {
     return (
         <Header>
-            <div className="title"><Link to="/">homePage(kari)</Link></div>
+            <div className="title"><Link to="/home">homePage(kari)</Link></div>
             <MenuList />
         </Header>
     );
