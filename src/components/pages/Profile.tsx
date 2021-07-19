@@ -1,4 +1,4 @@
-import { VFC, useState, useEffect, useCallback } from "react";
+import { VFC, useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { SearchInput } from "../molecules/SearchInput";
@@ -59,7 +59,7 @@ export const Profile: VFC = () => {
                     ( "一覧を取得できませんでした")
                 }
             </SUserArea>
-            { show && target && (<MemberDetailModal show={show} setShow={setShow} target={target} />)}
+            { target && (<MemberDetailModal show={show} setShow={setShow} target={target} />)}
             
         </div>
     );

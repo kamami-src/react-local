@@ -9,8 +9,6 @@ export const Footer: VFC = () => {
 
 const SFooter = styled.footer`
     margin: 20px;
-    position: fixed;
     bottom: 0;
-    width: 100%;
     text-align: center;
 `;

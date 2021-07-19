@@ -8,11 +8,9 @@ function App() {
   return (
     <>
       <body>
-        <div className="container">
           <BrowserRouter>
             <Router/>
           </BrowserRouter>
-        </div>
       </body>
     </>
   );

@@ -11,6 +11,7 @@ export const UseAuth = () => {
     const { showMessage } = UseMessage();
     const history = useHistory();
 
+    /* ログイン処理 */
     const logIn = (id: number) => {
         getSpecificUser({id: id}).then((res) => {
             if (res.data) {
@@ -29,7 +30,7 @@ export const UseAuth = () => {
         });
     }
 
-    
+    /* ログインユーザが管理者かどうか取得 */
     const GetAdminFlg = () => {
         const { loginUser } = useContext(LoginUserContext);
         const adminFlg = loginUser ? loginUser.isAdmin : false;

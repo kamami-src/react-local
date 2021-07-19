@@ -1,5 +1,5 @@
-import { memo, useCallback } from "react";
-import { Dispatch, ReactElement, SetStateAction, useState, VFC } from "react"
+import { memo } from "react";
+import { Dispatch, SetStateAction, VFC } from "react"
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -17,6 +17,8 @@ export const MemberDetailModal: VFC<Props> = memo((props) => {
     const { show, setShow, target } = props;
     console.log(`memberDetailModalレンダリング`)
     const modalClose = () => setShow(false);
+    
+    // ログインユーザが管理者かどうか判別
     const { GetAdminFlg } = UseAuth();
     const isAdmin = GetAdminFlg();
 
